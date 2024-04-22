@@ -5,7 +5,7 @@ end
 io.stdout:setvbuf("no")
 
 -- questions pour Nicolas:
--- ai du aller chercher nest partout, meilleure solution?
+-- ai du déclarer HeroFish et Nest en variables globales dans le SceneGame. Si local, peut pas le faire appeler par enemy, sauf si je declare d'aller les chercher en local. Mieux?
 
 --comment faire une "pause" - donc pas de unload/reload, alors que notre fonction ChangeScene load et unload par default - garder sa progression??
 -- mettre dans le unload de la scene game, if keypressed?? --> aller mettre variable pause dans lupdate des sprite.

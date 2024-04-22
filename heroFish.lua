@@ -1,6 +1,6 @@
 local heroimage = love.graphics.newImage("images/pufferfish.png")
 
-heroFish = createSprite("heroFish", heroimage, 100, 100)
+local heroFish = createSprite("heroFish", heroimage, 100, 100)
 
 heroFish.offset.x = heroimage:getWidth() * 0.5
 heroFish.offset.y = heroimage:getHeight() * 0.5
