@@ -1,6 +1,6 @@
 local nestimage = love.graphics.newImage("images/nest1 resize.png")
 
-local nest = createsprite("nest", nestimage, 100, 100)
+local nest = createSprite("nest", nestimage, 100, 100)
 
 nest.offset.x = nestimage:getWidth() * 0.5
 nest.offset.y = nestimage:getHeight() * 0.5
@@ -15,7 +15,7 @@ end
 nest.update = function(dt)
 end
 
-nest.takedamage = function(pDamage)
+nest.takeDamage = function(pDamage)
     nest.energy = nest.energy - pDamage
 end
 

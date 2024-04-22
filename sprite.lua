@@ -1,6 +1,6 @@
 local sprites = {}
 
-function createsprite(label, pTexture, pX, pY, pAngle)
+function createSprite(label, pTexture, pX, pY, pAngle)
     local sprite = {}
     sprite.texture = pTexture
     sprite.x = pX or 50

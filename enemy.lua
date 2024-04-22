@@ -7,7 +7,7 @@ enemyimages[4] = love.graphics.newImage("images/enemy_fish4.png")
 function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
     local nb = love.math.random(#enemyimages)
     local image = enemyimages[nb]
-    local enemy = createsprite("enemy", image, pX, pY, 0)
+    local enemy = createSprite("enemy", image, pX, pY, 0)
 
     enemy.offset.x = image:getWidth() * 0.5
     enemy.offset.y = image:getHeight() * 0.5
@@ -56,10 +56,10 @@ function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
 
     enemy.onCollide = function(otherSprite)
         if otherSprite.label == "heroFish" or otherSprite.label == "nest" then
-            enemy.isFree = true
             if otherSprite.takeDamage then
                 otherSprite.takeDamage(enemy.damage)
             end
+            enemy.isFree = true
         end
     end
 end

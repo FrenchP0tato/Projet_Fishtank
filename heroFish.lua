@@ -1,6 +1,6 @@
 local heroimage = love.graphics.newImage("images/pufferfish.png")
 
-local heroFish = createsprite("heroFish", heroimage, 100, 100)
+heroFish = createSprite("heroFish", heroimage, 100, 100)
 
 heroFish.offset.x = heroimage:getWidth() * 0.5
 heroFish.offset.y = heroimage:getHeight() * 0.5
@@ -68,17 +68,17 @@ heroFish.aim = function(pX, pY)
     heroFish.shootingAngle = math.atan2(pY - heroFish.y, pX - heroFish.x)
 end
 
-heroFish.lifechange = function(way)
+heroFish.lifeChange = function(way)
     heroFish.life = heroFish.life + (1 * way)
     if heroFish.life == 0 then
         gameOver = true
     end
 end
 
-heroFish.takedamage = function(pDamage)
+heroFish.takeDamage = function(pDamage)
     heroFish.energy = heroFish.energy - pDamage
     if heroFish.energy <= 0 then
-        heroFish.lifechange(-1)
+        heroFish.lifeChange(-1)
         heroFish.energy = 100
     end
 end

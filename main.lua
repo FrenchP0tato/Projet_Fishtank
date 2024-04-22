@@ -12,8 +12,8 @@ io.stdout:setvbuf("no")
 -- mettre bares de vies: attacher au sprite ou creer un nouveau sprite? - creer un objet barre de vie = new bare de vie (taille min, taille max, valeur), attachée à mon objet
 
 -- to do:
---dans bulle otherSprite.isFree = true --remplacer par de la perte d'énergie pour les enemy
---rajouter etat chasse joueur pour enemis
+-- creer la pause
+-- creer Game Over/Victoire
 -- afficher un fond end tiles
 -- creer un menu de pause avec les règles
 -- afficher bares de vies du joeur et du nid (en bas)

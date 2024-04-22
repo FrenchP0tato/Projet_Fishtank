@@ -1,7 +1,7 @@
 local bulleimage = love.graphics.newImage("images/bullet.png")
 
 function newbulle(pX, pY, pAngle, pSpeed, pDamage)
-    local b = createsprite("bulle", bulleimage, pX, pY, pAngle)
+    local b = createSprite("bulle", bulleimage, pX, pY, pAngle)
 
     b.offset.x = bulleimage:getWidth() * 0.5
     b.offset.y = bulleimage:getHeight() * 0.5

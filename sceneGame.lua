@@ -13,7 +13,7 @@ defaultspeed = 200
 scene.load = function()
     initSprites()
     loadHearts()
-    newWave(30, 2, "AttackNest", 100, 10, 30)
+    newWave(30, 2, "AttackNest", 100, 100, 30)
     --function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
 end
 
@@ -22,7 +22,7 @@ scene.update = function(dt)
     cleanSprites()
 
     if nest.energy <= 0 then
-        heroFish.lifechange(-1)
+        heroFish.lifeChange(-1)
         nest.energy = 100
     end
     hearts.nb = heroFish.life
