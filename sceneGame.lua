@@ -2,20 +2,20 @@ require "bulle"
 require "enemy"
 require "wavespawner"
 local hearts = require "hearts"
+local nest = require "nest"
+local heroFish = require "herofish"
 
 local scene = {}
 gameOver = false
-Startinglife = 1
+Startinglife = 5
 defaultspeed = 200
 
 scene.pause = false
 
 scene.load = function()
-    nest = require "nest"
-    heroFish = require "herofish"
     initSprites()
     loadHearts()
-    newWave(30, 2, "AttackNest", 100, 100, 30)
+    newWave(30, 2, "AttackNest", 100, 10, 30)
     --rappel: function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
 end
 scene.unload = function()

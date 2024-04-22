@@ -4,6 +4,9 @@ enemyimages[2] = love.graphics.newImage("images/enemy_fish2.png")
 enemyimages[3] = love.graphics.newImage("images/enemy_fish3.png")
 enemyimages[4] = love.graphics.newImage("images/enemy_fish4.png")
 
+local heroFish = require "HeroFish"
+local nest = require "nest"
+
 function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
     local nb = love.math.random(#enemyimages)
     local image = enemyimages[nb]

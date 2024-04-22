@@ -15,10 +15,11 @@ io.stdout:setvbuf("no")
 -- to do:
 -- creer la pause  - ok mais à améliorer
 -- creer Game Over - OK
--- creer l'unload de la currentscene!
+-- creer l'unload de la currentscene! - OK
 -- creer la condition de victoire
+-- ajouter des waves multiples et des niveaux
 -- afficher un fond end tiles
--- creer un menu de pause avec les règles
+-- Ajouter les règles du jeu au menu de pause
 -- afficher bares de vies du joeur et du nid (en bas)
 -- implementer un systeme de niveaux => enemis ont plus de vie, vont vers le joueur quand touchés => Machine à Etat => Etat patrouille, etat attaque joueur
 -- recuperation de bonus

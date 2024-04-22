@@ -1,11 +1,10 @@
-require "enemy"
-
 function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
     local wave = createSprite("wave")
     wave.totalNb = wNbEnemy
     wave.timer = wTimer
     wave.tic = 0
     wave.enemyNB = 0
+    wave.clear = false
 
     --function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
 
@@ -23,8 +22,9 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
                     newEnemy(screen.width, love.math.random(0, screen.height), wState, wSpeed, wDamage, wEnergy, -1)
                 end
                 wave.enemyNB = wave.enemyNB + 1
+            elseif wave.enemyNB == wave.totalNb then
+                wave.clear = true
             end
-
             wave.tic = 0
         end
     end
