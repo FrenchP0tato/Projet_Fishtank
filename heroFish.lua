@@ -42,8 +42,7 @@ heroFish.isOutofScreen = function()
 end
 
 heroFish.update = function(dt)
-    local currentScene = getCurrentScene()
-    if currentScene.pause == true then
+    if getCurrentScene().pause then
         return
     end
     if love.keyboard.isDown("d") then

@@ -29,8 +29,7 @@ function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
     end
 
     enemy.update = function(dt)
-        local currentScene = getCurrentScene()
-        if currentScene.pause == true then
+        if getCurrentScene().pause then
             return
         end
         if enemy.state == "AttackNest" then

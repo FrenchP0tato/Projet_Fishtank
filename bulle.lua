@@ -19,10 +19,10 @@ function newbulle(pX, pY, pAngle, pSpeed, pDamage)
     end
 
     b.update = function(dt)
-        local currentScene = getCurrentScene()
-        if currentScene.pause == true then
+        if getCurrentScene().pause then
             return
         end
+
         b.x = b.x + math.cos(b.angle) * b.speed * dt
         b.y = b.y + math.sin(b.angle) * b.speed * dt
         b.isOutofScreen()
