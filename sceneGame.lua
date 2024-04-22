@@ -10,10 +10,12 @@ gameOver = false
 Startinglife = 5
 defaultspeed = 200
 
+scene.pause = false
+
 scene.load = function()
     initSprites()
     loadHearts()
-    newWave(30, 2, "AttackNest", 100, 100, 30)
+    newWave(30, 2, "AttackNest", 100, 10, 30)
     --function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
 end
 

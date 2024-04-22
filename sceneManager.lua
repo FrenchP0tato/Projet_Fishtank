@@ -39,4 +39,6 @@ keyPressed = function(key)
     end
 end
 
--- get currentscene, demande si vrai dans la scene
+getCurrentScene = function()
+    return currentScene
+end
