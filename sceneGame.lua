@@ -41,9 +41,8 @@ end
 scene.keyPressed = function(key)
     if key == "m" then
         changeScene("Menu")
-    end
-    if key == "space" then
-        heroFish.fire()
+    elseif key == "space" then
+        scene.pause = not scene.pause
     --ajouter ici une pause qui ne change pas la scene!! ou alors change la scene mais sans unload/reload
     end
 end

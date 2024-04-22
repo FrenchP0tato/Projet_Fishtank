@@ -42,6 +42,10 @@ heroFish.isOutofScreen = function()
 end
 
 heroFish.update = function(dt)
+    local currentScene = getCurrentScene()
+    if currentScene.pause == true then
+        return
+    end
     if love.keyboard.isDown("d") then
         heroFish.rotate(dt, 1)
     elseif love.keyboard.isDown("a") or love.keyboard.isDown("q") then

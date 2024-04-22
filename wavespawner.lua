@@ -10,6 +10,10 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
     --function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
 
     wave.update = function(dt)
+        local currentScene = getCurrentScene()
+        if currentScene.pause == true then
+            return
+        end
         wave.tic = wave.tic + dt
         if wave.tic >= wave.timer then
             if wave.enemyNB < wave.totalNb then
