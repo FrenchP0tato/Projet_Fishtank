@@ -86,3 +86,11 @@ function getGroupSprite(label)
     end
     return result
 end
+
+function unloadSprites(label)
+    for i = #sprites, 1, -1 do
+        if sprites[i].label == label then
+            table.remove(sprites, i)
+        end
+    end
+end

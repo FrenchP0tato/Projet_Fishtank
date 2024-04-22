@@ -1,7 +1,7 @@
 require "enemy"
 
 function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
-    local wave = createSprite()
+    local wave = createSprite("wave")
     wave.totalNb = wNbEnemy
     wave.timer = wTimer
     wave.tic = 0

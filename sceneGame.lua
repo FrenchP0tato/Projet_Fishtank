@@ -1,5 +1,3 @@
-nest = require "nest"
-heroFish = require "herofish"
 require "bulle"
 require "enemy"
 require "wavespawner"
@@ -13,10 +11,18 @@ defaultspeed = 200
 scene.pause = false
 
 scene.load = function()
+    nest = require "nest"
+    heroFish = require "herofish"
     initSprites()
     loadHearts()
     newWave(30, 2, "AttackNest", 100, 100, 30)
-    --function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
+    --rappel: function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
+end
+scene.unload = function()
+    unloadSprites("wave")
+    unloadSprites("enemy")
+    unloadSprites("bulle")
+    gameOver = false
 end
 
 scene.update = function(dt)
@@ -65,7 +71,6 @@ scene.keyPressed = function(key)
         changeScene("Menu")
     elseif key == "space" then
         scene.pause = not scene.pause
-    --ajouter ici une pause qui ne change pas la scene!! ou alors change la scene mais sans unload/reload
     end
 end
 
@@ -73,9 +78,6 @@ scene.mousePressed = function(mouseX, mouseY, button)
     if button == 1 then
         heroFish.fire()
     end
-end
-
-scene.unload = function()
 end
 
 return scene

@@ -6,6 +6,7 @@ io.stdout:setvbuf("no")
 
 -- questions pour Nicolas:
 -- ai du déclarer HeroFish et Nest en variables globales dans le SceneGame. Si local, peut pas le faire appeler par enemy, sauf si je declare d'aller les chercher en local. Mieux?
+--nouvelle idée: creer une fonction a la fin de nest et tank qui va les chercher!! comme avec getCurrentScene!!
 
 --comment faire une "pause" - donc pas de unload/reload, alors que notre fonction ChangeScene load et unload par default - garder sa progression??
 -- mettre dans le unload de la scene game, if keypressed?? --> aller mettre variable pause dans lupdate des sprite.
@@ -13,7 +14,9 @@ io.stdout:setvbuf("no")
 
 -- to do:
 -- creer la pause  - ok mais à améliorer
--- creer Game Over/Victoire
+-- creer Game Over - OK
+-- creer l'unload de la currentscene!
+-- creer la condition de victoire
 -- afficher un fond end tiles
 -- creer un menu de pause avec les règles
 -- afficher bares de vies du joeur et du nid (en bas)
