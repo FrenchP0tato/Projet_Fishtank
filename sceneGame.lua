@@ -9,13 +9,18 @@ local scene = {}
 gameOver = false
 Startinglife = 5
 defaultspeed = 200
+local WaveSize = 20
+local WaveTimer = 2
+local WaveSpeed = 100
+local WaveDamage = 10
+local WaveEnergy = 30
 
 scene.pause = false
 
 scene.load = function()
     initSprites()
     loadHearts()
-    newWave(30, 2, "AttackNest", 100, 10, 30)
+    newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
     --rappel: function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
 end
 scene.unload = function()
@@ -55,14 +60,7 @@ scene.draw = function()
     drawSprites()
     drawHearts(100, 10)
     if getCurrentScene().pause then
-        local largeur = screen.width * 0.8
-        local hauteur = screen.height * 0.8
-        local font = love.graphics.getFont()
-        local decalagex = font:getWidth("Le jeu est en pause, appuyez sur espace pour reprendre le jeu!")
-        love.graphics.rectangle("fill", (screen.width - largeur) * 0.5, (screen.height - hauteur) * 0.5, largeur, hauteur)
-        love.graphics.setColor(0.5, 0.5, 0.5)
-        love.graphics.print("Le jeu est en pause, appuyez sur espace pour reprendre le jeu!", screen.centerx - decalagex * 0.5, screen.centery, 0, 1, 1)
-        love.graphics.setColor(1, 1, 1)
+        drawPause()
     end
 end
 
