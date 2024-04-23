@@ -9,25 +9,33 @@ local scene = {}
 gameOver = false
 Startinglife = 5
 defaultspeed = 200
-local WaveSize = 20
-local WaveTimer = 2
-local WaveSpeed = 100
-local WaveDamage = 10
-local WaveEnergy = 30
+local stage = 0
+local activeWaves = 0
+local enemyNB = 0
+
+local WaveSize = 0
+local WaveTimer = 0
+local WaveSpeed = 0
+local WaveDamage = 0
+local WaveEnergy = 0
 
 scene.pause = false
 
 scene.load = function()
     initSprites()
     loadHearts()
-    newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
-    --rappel: function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
+    gameOver = false
+    stage = 0
+    WaveSize = 2
+    WaveTimer = 2
+    WaveSpeed = 100
+    WaveDamage = 10
+    WaveEnergy = 30
+    stage = 0
 end
 scene.unload = function()
-    unloadSprites("wave")
     unloadSprites("enemy")
     unloadSprites("bulle")
-    gameOver = false
 end
 
 scene.update = function(dt)
@@ -45,20 +53,30 @@ scene.update = function(dt)
     if heroFish.life <= 0 then
         gameOver = true
     end
+    activeWaves = getGroupSprite("wave")
+    enemyNB = getGroupSprite("enemy")
 end
 
 scene.draw = function()
     love.graphics.setBackgroundColor(0.099, 0.795, 0.591)
     if gameOver == true then
         love.graphics.print("Game Over!", screen.centerx, 250, 0, 2, 2, 20)
+        love.graphics.print("Felicitation, vous avez atteint le niveau " .. tostring(stage), screen.centerx, 250, 0, 2, 2, 20)
         love.graphics.print("Appuyez sur M pour revenir au Menu", screen.centerx, screen.centery, 0, 1.5, 1.5, 100)
         return
     end
-
     love.graphics.print("Energie de Maman poisson:" .. tostring(math.floor(heroFish.energy)) .. "   --   Energie du Nid :" .. tostring(nest.energy), screen.centerx, screen.height - 20)
     love.graphics.print("Vies restantes:", 10, 15)
     drawSprites()
     drawHearts(100, 10)
+
+    local text = "Niveau:  "
+    love.graphics.print(text .. tostring(stage), screen.centerx - getDecalage(text), 20, 0, 1.5, 1.5)
+
+    if #activeWaves == 0 and #enemyNB == 0 then
+        local text = "Appuyez sur V pour lancer la prochaine vague!"
+        love.graphics.print(text, screen.centerx - getDecalage(text) * 0.5, screen.centery - 100, 0, 1, 1)
+    end
     if getCurrentScene().pause then
         drawPause()
     end
@@ -69,6 +87,13 @@ scene.keyPressed = function(key)
         changeScene("Menu")
     elseif key == "space" then
         scene.pause = not scene.pause
+    elseif key == "v" and #activeWaves == 0 and #enemyNB == 0 then
+        newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
+        stage = stage + 1
+        WaveTimer = WaveTimer
+        WaveSpeed = WaveSpeed * 1.1
+        WaveDamage = WaveDamage * 1.1
+        WaveEnergy = WaveEnergy * 1.1
     end
 end
 

@@ -12,3 +12,20 @@ function drawPause()
     love.graphics.print("Le jeu est en pause, appuyez sur espace pour reprendre le jeu!", screen.centerx - decalagex * 0.5, screen.centery, 0, 1, 1)
     love.graphics.setColor(1, 1, 1)
 end
+
+function checkWaves()
+    local waves = getGroupSprite("wave")
+    for i = 1, #waves do
+        if (waves[i].clear == false) then
+            return false
+        end
+        return true
+    end
+end
+
+function getDecalage(text)
+    local text = text
+    local font = love.graphics.getFont()
+    local decalage = font:getWidth(tostring(text))
+    return decalage
+end

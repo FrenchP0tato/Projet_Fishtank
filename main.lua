@@ -13,9 +13,7 @@ io.stdout:setvbuf("no")
 -- mettre bares de vies: attacher au sprite ou creer un nouveau sprite? - creer un objet barre de vie = new bare de vie (taille min, taille max, valeur), attachée à mon objet
 
 -- to do:
--- creer la pause  - ok mais à améliorer
--- creer Game Over - OK
--- creer l'unload de la currentscene! - OK
+-- regler les conditions de creation de wave
 -- creer la condition de victoire
 -- ajouter des waves multiples et des niveaux
 -- afficher un fond end tiles

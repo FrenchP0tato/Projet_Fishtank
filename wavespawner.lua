@@ -24,19 +24,17 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
                 wave.enemyNB = wave.enemyNB + 1
             elseif wave.enemyNB == wave.totalNb then
                 wave.clear = true
+                wave.isFree = true
             end
             wave.tic = 0
         end
     end
     wave.draw = function()
-        if wave.clear == false then --rajouter ici le draw uniquement pour la denière wave créée.
-            love.graphics.print("Wave:" .. tostring(wave.enemyNB) .. "/" .. tostring(wave.totalNb), 10, 30)
-        else
-            local text = "Wave terminée! Preparez-vous à la prochaine!"
-            local font = love.graphics.getFont()
-            local decalage = font:getWidth(tostring(text))
-            love.graphics.print(text, screen.centerx - decalage * 0.5, screen.centery - 50, 0, 1, 1)
+        if wave.clear == false then
+            local text = "Enemis restants dans la vague:"
+            love.graphics.print(text .. tostring(wave.enemyNB) .. "/" .. tostring(wave.totalNb), screen.centerx - (getDecalage(text) * 0.5) - 20, 40)
         end
     end
-    return wave
 end
+
+love.graphics.print("Felicitation, vous avez atteint le niveau " .. tostring(stage), screen.centerx, 250, 0, 2, 2, 20)
