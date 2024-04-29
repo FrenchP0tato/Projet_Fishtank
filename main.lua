@@ -6,14 +6,12 @@ io.stdout:setvbuf("no")
 
 -- questions pour Nicolas:
 -- ai du déclarer HeroFish et Nest en variables globales dans le SceneGame. Si local, peut pas le faire appeler par enemy, sauf si je declare d'aller les chercher en local. Mieux?
---nouvelle idée: creer une fonction a la fin de nest et tank qui va les chercher!! comme avec getCurrentScene!!
+--j'ai l'impression que mes declarations de variables et modules sont moches
 -- mettre bares de vies: attacher au sprite ou creer un nouveau sprite? - creer un objet barre de vie = new bare de vie (taille min, taille max, valeur), attachée à mon objet
+--ai reussi a trouver une fonction pour trouver la longer en pixels d'un string de text, MAIS foire quand scale text en x2 - meilleure solution?
 
 -- to do:
--- regler les conditions de creation de wave
 -- creer la condition de victoire
--- ajouter des waves multiples et des niveaux
--- afficher un fond end tiles
 -- Ajouter les règles du jeu au menu de pause
 -- afficher bares de vies du joeur et du nid (en bas)
 -- recuperation de bonus

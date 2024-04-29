@@ -31,8 +31,8 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
     end
     wave.draw = function()
         if wave.clear == false then
-            local text = "Enemis restants dans la vague:"
-            love.graphics.print(text .. tostring(wave.enemyNB) .. "/" .. tostring(wave.totalNb), screen.centerx - (getDecalage(text) * 0.5) - 20, 40)
+            local text = "Enemis restants dans la vague: "
+            love.graphics.print(text .. tostring(wave.enemyNB) .. "/" .. tostring(wave.totalNb), screen.centerx, 40, 0, 1, 1, getDecalage(text .. "    "))
         end
     end
 end

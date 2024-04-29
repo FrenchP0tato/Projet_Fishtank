@@ -8,10 +8,10 @@ heroFish.radius = 30
 
 heroFish.init = function()
     heroFish.x, heroFish.y = screen.center()
-    heroFish.speed = defaultspeed
+    heroFish.speed = STARTING_SPEED
     heroFish.rotationSpeed = 3
-    heroFish.life = Startinglife
-    heroFish.energy = 100
+    heroFish.life = STARTING_LIFE
+    heroFish.energy = STARTING_ENERGY
     heroFish.shootingspeed = 200
     heroFish.shootingdamage = 10
 end

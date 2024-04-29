@@ -26,6 +26,6 @@ end
 function getDecalage(text)
     local text = text
     local font = love.graphics.getFont()
-    local decalage = font:getWidth(tostring(text))
+    local decalage = font:getWidth(tostring(text)) * 0.5
     return decalage
 end
