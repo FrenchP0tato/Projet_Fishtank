@@ -13,7 +13,7 @@ heroFish.init = function()
     heroFish.life = STARTING_LIFE
     heroFish.energy = STARTING_ENERGY
     heroFish.shootingspeed = 200
-    heroFish.shootingdamage = 10
+    heroFish.shootingdamage = STARTING_DAMAGE
 end
 
 heroFish.rotate = function(dt, way)

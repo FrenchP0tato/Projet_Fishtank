@@ -10,30 +10,33 @@ local titles = require "titles"
 local scene = {}
 scene.pause = false
 gameOver = false
-STARTING_LIFE = 1
+STARTING_LIFE = 5
 STARTING_ENERGY = 100
 STARTING_SPEED = 200
-local stage = 0
+STARTING_DAMAGE = 10
+ENEMY_BASEDAMAGE = 100
+ENEMY_BASEENERGY = 30
+WAVE_SIZE = 2
+
+--[[ local stage = 0
 local activeWaves = 0
 local enemyNB = 0
-
-local WaveSize = 0
+local WaveSize = WAVE_SIZE
 local WaveTimer = 0
 local WaveSpeed = 0
-local WaveDamage = 0
-local WaveEnergy = 0
-
+local WaveDamage = ENEMY_BASEDAMAGE
+local WaveEnergy = ENEMY_BASEENERGY ]]
 scene.load = function()
     tiles.load()
     initSprites()
     loadHearts()
     gameOver = false
     stage = 0
-    WaveSize = 2
+    WaveSize = WAVE_SIZE
     WaveTimer = 2
     WaveSpeed = STARTING_SPEED * 0.5
-    WaveDamage = 100
-    WaveEnergy = 30
+    WaveDamage = ENEMY_BASEDAMAGE
+    WaveEnergy = ENEMY_BASEENERGY
     stage = 0
 end
 scene.unload = function()
@@ -74,10 +77,10 @@ scene.draw = function()
         love.graphics.print(text, screen.centerx, screen.centery + 40, 0, 1.5, 1.5, getDecalage(text))
         return
     end
-    local text = "Energie de Maman poisson:   -    -   Energie du Nid :"
-    local decal = getDecalage(text)
+    local text1 = "Energie de Maman Poisson:"
+    local text2 = "   --   Energie du Nid :"
     love.graphics.setColor(0, 0, 0)
-    love.graphics.print("Energie de Maman poisson:" .. tostring(math.floor(heroFish.energy)) .. "   --   Energie du Nid :" .. tostring(nest.energy), screen.centerx, screen.height - 50, 0, 1, 1, decal)
+    love.graphics.print(text1 .. tostring(math.floor(heroFish.energy)) .. text2 .. tostring(nest.energy), screen.centerx, screen.height - 50, 0, 1, 1, getDecalage(text1) + getDecalage(text2))
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("Vies restantes:", 10, 15)
     drawSprites()

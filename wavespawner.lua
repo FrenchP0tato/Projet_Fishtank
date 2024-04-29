@@ -6,7 +6,7 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
     wave.enemyNB = 0
     wave.clear = false
 
-    --function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
+    --rappel function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
 
     wave.update = function(dt)
         if getCurrentScene().pause then

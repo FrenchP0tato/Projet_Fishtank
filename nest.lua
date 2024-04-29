@@ -5,11 +5,10 @@ local nest = createSprite("nest", nestimage, 100, 100)
 nest.offset.x = nestimage:getWidth() * 0.5
 nest.offset.y = nestimage:getHeight() * 0.5
 nest.radius = 30
-nest.energy = 100
 
 nest.init = function()
     nest.x, nest.y = screen.center()
-    nest.energy = 100
+    nest.energy = STARTING_ENERGY
 end
 
 nest.update = function(dt)

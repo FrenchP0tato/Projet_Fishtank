@@ -11,11 +11,11 @@ io.stdout:setvbuf("no")
 --ai reussi a trouver une fonction pour trouver la longer en pixels d'un string de text, MAIS foire quand scale text en x2 - meilleure solution?
 
 -- to do:
--- creer la condition de victoire
--- Ajouter les règles du jeu au menu de pause
+-- creer une condition de victoire
 -- afficher bares de vies du joeur et du nid (en bas)
 -- recuperation de bonus
--- systeme de score
+-- systeme de score avancé
+--cleanup: enlever les tiles non -utilisée, fixer la hauteur/largeur de l'écran
 
 require "sceneManager"
 require "sprite"
