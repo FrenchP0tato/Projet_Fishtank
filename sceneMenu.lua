@@ -11,6 +11,7 @@ scene.draw = function()
     love.graphics.print("FishFlank", screen.centerx, 100, 0, 2, 2, 20)
     love.graphics.print("Menu", screen.centerx, 200, 0, 1.5, 1.5)
     love.graphics.print("Appuyez sur Espace pour Lancer le Jeu", screen.centerx, 250, 0, 1.5, 1.5, 100)
+    love.graphics.print("Dim ecran: largeur:" .. tostring(screen.width) .. "hauteur" .. tostring(screen.height), 0, 0)
 end
 
 scene.keyPressed = function(key)

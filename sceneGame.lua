@@ -4,6 +4,7 @@ require "wavespawner"
 local hearts = require "hearts"
 local nest = require "nest"
 local heroFish = require "herofish"
+local tiles = require "tiles"
 
 local scene = {}
 gameOver = false
@@ -22,6 +23,7 @@ local WaveEnergy = 0
 scene.pause = false
 
 scene.load = function()
+    tiles.load()
     initSprites()
     loadHearts()
     gameOver = false
@@ -59,13 +61,18 @@ end
 
 scene.draw = function()
     love.graphics.setBackgroundColor(0.099, 0.795, 0.591)
+    tiles.draw()
     if gameOver == true then
         love.graphics.print("Game Over!", screen.centerx, 250, 0, 2, 2, 20)
         love.graphics.print("Felicitation, vous avez atteint le niveau " .. tostring(stage), screen.centerx, 250, 0, 2, 2, 20)
         love.graphics.print("Appuyez sur M pour revenir au Menu", screen.centerx, screen.centery, 0, 1.5, 1.5, 100)
         return
     end
-    love.graphics.print("Energie de Maman poisson:" .. tostring(math.floor(heroFish.energy)) .. "   --   Energie du Nid :" .. tostring(nest.energy), screen.centerx, screen.height - 20)
+    local text = "Energie de Maman poisson:   -    -   Energie du Nid :"
+    local decal = getDecalage(text)
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.print("Energie de Maman poisson:" .. tostring(math.floor(heroFish.energy)) .. "   --   Energie du Nid :" .. tostring(nest.energy), screen.centerx - decal * 0.5, screen.height - 50)
+    love.graphics.setColor(1, 1, 1)
     love.graphics.print("Vies restantes:", 10, 15)
     drawSprites()
     drawHearts(100, 10)

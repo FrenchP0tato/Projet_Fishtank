@@ -36,5 +36,3 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
         end
     end
 end
-
-love.graphics.print("Felicitation, vous avez atteint le niveau " .. tostring(stage), screen.centerx, 250, 0, 2, 2, 20)
