@@ -82,7 +82,7 @@ heroFish.takeDamage = function(pDamage)
     heroFish.energy = heroFish.energy - pDamage
     if heroFish.energy <= 0 then
         heroFish.lifeChange(-1)
-        heroFish.energy = 100
+        heroFish.energy = STARTING_ENERGY
     end
 end
 

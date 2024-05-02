@@ -7,25 +7,21 @@ local heroFish = require "herofish"
 local tiles = require "tiles"
 local titles = require "titles"
 
-local scene = {}
-scene.pause = false
-gameOver = false
+--Constantes Herofish/Nest
 STARTING_LIFE = 5
 STARTING_ENERGY = 100
 STARTING_SPEED = 200
 STARTING_DAMAGE = 10
+--Constantes Enemis/Waves
 ENEMY_BASEDAMAGE = 100
 ENEMY_BASEENERGY = 30
 WAVE_SIZE = 2
+WAVE_TIMER = 2
 
---[[ local stage = 0
-local activeWaves = 0
-local enemyNB = 0
-local WaveSize = WAVE_SIZE
-local WaveTimer = 0
-local WaveSpeed = 0
-local WaveDamage = ENEMY_BASEDAMAGE
-local WaveEnergy = ENEMY_BASEENERGY ]]
+local scene = {}
+scene.pause = false
+gameOver = false
+
 scene.load = function()
     tiles.load()
     initSprites()
@@ -33,11 +29,10 @@ scene.load = function()
     gameOver = false
     stage = 0
     WaveSize = WAVE_SIZE
-    WaveTimer = 2
+    WaveTimer = WAVE_TIMER
     WaveSpeed = STARTING_SPEED * 0.5
     WaveDamage = ENEMY_BASEDAMAGE
     WaveEnergy = ENEMY_BASEENERGY
-    stage = 0
 end
 scene.unload = function()
     unloadSprites("enemy")
@@ -53,7 +48,7 @@ scene.update = function(dt)
 
     if nest.energy <= 0 then
         heroFish.lifeChange(-1)
-        nest.energy = 100
+        nest.energy = STARTING_ENERGY
     end
     hearts.nb = heroFish.life
     if heroFish.life <= 0 then

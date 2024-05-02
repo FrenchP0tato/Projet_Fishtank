@@ -6,7 +6,7 @@ io.stdout:setvbuf("no")
 
 -- questions pour Nicolas:
 -- ai du déclarer HeroFish et Nest en variables globales dans le SceneGame. Si local, peut pas le faire appeler par enemy, sauf si je declare d'aller les chercher en local. Mieux?
---j'ai l'impression que mes declarations de variables et modules sont moches
+--j'ai l'impression que mes declarations de modules sont moches
 -- mettre bares de vies: attacher au sprite ou creer un nouveau sprite? - creer un objet barre de vie = new bare de vie (taille min, taille max, valeur), attachée à mon objet
 --ai reussi a trouver une fonction pour trouver la longer en pixels d'un string de text, MAIS foire quand scale text en x2 - meilleure solution?
 
