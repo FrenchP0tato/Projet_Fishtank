@@ -14,10 +14,23 @@ heroFish.init = function()
     heroFish.energy = STARTING_ENERGY
     heroFish.shootingspeed = 200
     heroFish.shootingdamage = STARTING_DAMAGE
+    heroFish.scale.x = 1
+    heroFish.scale.y = 1
 end
 
 heroFish.rotate = function(dt, way)
-    heroFish.angle = heroFish.angle + heroFish.rotationSpeed * dt * way
+    heroFish.angle = heroFish.angle + heroFish.rotationSpeed * dt * way --angle en radians
+    if math.abs(heroFish.angle) >= 2 * math.pi then
+        heroFish.angle = 0
+    end
+    local angleendegres = heroFish.angle * 180 / math.pi
+    if math.abs(angleendegres) > 90 then
+        heroFish.scale.y = -1
+        heroFish.scale.x = -1
+    else
+        heroFish.scale.y = 1
+        heroFish.scale.x = 1
+    end
 end
 
 heroFish.move = function(dt, way)
