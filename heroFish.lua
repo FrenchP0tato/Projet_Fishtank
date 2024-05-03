@@ -26,10 +26,8 @@ heroFish.rotate = function(dt, way)
     local angleendegres = heroFish.angle * 180 / math.pi
     if math.abs(angleendegres) > 90 then
         heroFish.scale.y = -1
-        heroFish.scale.x = -1
     else
         heroFish.scale.y = 1
-        heroFish.scale.x = 1
     end
 end
 
@@ -97,6 +95,16 @@ heroFish.takeDamage = function(pDamage)
         heroFish.lifeChange(-1)
         heroFish.energy = STARTING_ENERGY
     end
+end
+
+heroFish.lifeBar = createSprite("HeroBar")
+heroFish.lifeBar.draw = function()
+    love.graphics.rectangle("line", 20, 50, STARTING_ENERGY * 2, 15)
+    love.graphics.setColor(0.116, 0.675, 0.255)
+    love.graphics.rectangle("fill", 20, 50, heroFish.energy * 2, 15)
+    love.graphics.setColor(1, 1, 1)
+    local text = "Energie de Maman Poisson:  "
+    love.graphics.print(text .. tostring(math.floor(heroFish.energy)), 20, 50)
 end
 
 return heroFish

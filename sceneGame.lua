@@ -13,7 +13,7 @@ STARTING_ENERGY = 100
 STARTING_SPEED = 200
 STARTING_DAMAGE = 10
 --Constantes Enemis/Waves
-ENEMY_BASEDAMAGE = 100
+ENEMY_BASEDAMAGE = 10
 ENEMY_BASEENERGY = 30
 WAVE_SIZE = 2
 WAVE_TIMER = 2
@@ -72,11 +72,6 @@ scene.draw = function()
         love.graphics.print(text, screen.centerx, screen.centery + 40, 0, 1.5, 1.5, getDecalage(text))
         return
     end
-    local text1 = "Energie de Maman Poisson:"
-    local text2 = "   --   Energie du Nid :"
-    love.graphics.setColor(0, 0, 0)
-    love.graphics.print(text1 .. tostring(math.floor(heroFish.energy)) .. text2 .. tostring(nest.energy), screen.centerx, screen.height - 50, 0, 1, 1, getDecalage(text1) + getDecalage(text2))
-    love.graphics.setColor(1, 1, 1)
     love.graphics.print("Vies restantes:", 10, 15)
     drawSprites()
     drawHearts(100, 10)

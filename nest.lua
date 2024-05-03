@@ -21,4 +21,13 @@ end
 nest.onCollide = function(otherSprite)
 end
 
+nest.lifeBar = createSprite("nestbar")
+nest.lifeBar.draw = function()
+    love.graphics.rectangle("line", nest.x - STARTING_ENERGY * 0.5, nest.y + 40, STARTING_ENERGY, 15)
+    love.graphics.setColor(0.116, 0.675, 0.255)
+    love.graphics.rectangle("fill", nest.x - STARTING_ENERGY * 0.5, nest.y + 40, nest.energy, 15)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.print("Energie du nid", nest.x - STARTING_ENERGY * 0.5 + 5, nest.y + 40)
+end
+
 return nest
