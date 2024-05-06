@@ -4,9 +4,6 @@ bonusimages[2] = love.graphics.newImage("images/wheel.png")
 bonusimages[3] = love.graphics.newImage("images/bluepill.png")
 bonusimages[4] = love.graphics.newImage("images/redpill.png")
 
-local heroFish = require "HeroFish"
-local nest = require "nest"
-
 local bonuslist = {}
 
 function newBonus(nb, pX, pY)
@@ -29,16 +26,14 @@ function newBonus(nb, pX, pY)
     bonus.offset.y = image:getHeight() * 0.5
 
     bonus.activate = function(otherSprite)
-        if otherSprite.takeBonus then
-            if bonus.type == "vie" then
-                otherSprite.lifeChange(1)
-            elseif bonus.type == "bluePill" then
-                otherSprite.changeShootingSpeed(50, 1)
-            elseif bonus.type == "redPill" then
-                otherSprite.changeDamage(5, 1)
-            elseif bonus.type == "wheel" then
-                otherSprite.changeSpeed(50, 1)
-            end
+        if bonus.type == "vie" then
+            otherSprite.lifeChange(1)
+        elseif bonus.type == "bluePill" then
+            otherSprite.changeShootingSpeed(50, 1)
+        elseif bonus.type == "redPill" then
+            otherSprite.changeDamage(5, 1)
+        elseif bonus.type == "wheel" then
+            otherSprite.changeSpeed(50, 1)
         end
     end
 
@@ -51,7 +46,7 @@ function newBonus(nb, pX, pY)
         end
     end
 
-    bonus.info = createSprite("InfoBar")
+    bonus.info = createSprite("InfoText")
     bonus.info.draw = function()
         if bonus.isFree == false then
             local text = 0

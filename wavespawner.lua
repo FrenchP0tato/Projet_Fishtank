@@ -9,8 +9,6 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
     wave.enemyNB = 0
     wave.clear = false
 
-    --rappel function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
-
     wave.update = function(dt)
         if getCurrentScene().pause then
             return
@@ -27,7 +25,7 @@ function newWave(wNbEnemy, wTimer, wState, wSpeed, wDamage, wEnergy)
                 wave.enemyNB = wave.enemyNB + 1
             elseif wave.enemyNB == wave.totalNb and #enemyNB == 0 then
                 wave.clear = true
-                local x = 150
+                local x = 200
                 local y = 150
                 local bonus1 = love.math.random(1, 4)
                 local bonus2 = love.math.random(1, 4)

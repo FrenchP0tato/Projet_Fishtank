@@ -10,7 +10,7 @@ local tiles = require "tiles"
 local titles = require "titles"
 
 --Constantes Herofish/Nest
-STARTING_LIFE = 5
+STARTING_LIFE = 3
 STARTING_ENERGY = 100
 STARTING_SPEED = 200
 STARTING_DAMAGE = 10
@@ -37,6 +37,7 @@ scene.load = function()
     WaveDamage = ENEMY_BASEDAMAGE
     WaveEnergy = ENEMY_BASEENERGY
 end
+
 scene.unload = function()
     unloadSprites("enemy")
     unloadSprites("bulle")
@@ -48,18 +49,19 @@ scene.update = function(dt)
     end
     updateSprites(dt)
     cleanSprites()
+    activeWaves = getGroupSprite("wave")
+    enemyNB = getGroupSprite("enemy")
+    activeBonus = getGroupSprite("bonus")
 
+    hearts.nb = heroFish.life
     if nest.energy <= 0 then
         heroFish.lifeChange(-1)
         nest.energy = STARTING_ENERGY
     end
-    hearts.nb = heroFish.life
     if heroFish.life <= 0 then
         gameOver = true
     end
-    activeWaves = getGroupSprite("wave")
-    enemyNB = getGroupSprite("enemy")
-    activeBonus = getGroupSprite("bonus")
+
     if #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
         newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
         stage = stage + 1
@@ -74,14 +76,7 @@ scene.draw = function()
     love.graphics.setBackgroundColor(0.099, 0.795, 0.591)
     tiles.draw()
     if gameOver == true then
-        local text = "Game Over!"
-        love.graphics.print(text, screen.centerx, 150, 0, 2, 2, getDecalage(text))
-        local text = "Felicitation, vous avez atteint le niveau "
-        love.graphics.print(text .. tostring(stage), screen.centerx, 250, 0, 1, 1, getDecalage(text))
-        local text = "et obtenu le rang de " .. titles[stage]
-        love.graphics.print(text, screen.centerx, 270, 0, 1, 1, getDecalage(text))
-        local text = "Appuyez sur M pour revenir au Menu"
-        love.graphics.print(text, screen.centerx, screen.centery + 40, 0, 1.5, 1.5, getDecalage(text))
+        drawGameOver(stage)
         return
     end
     love.graphics.print("Vies restantes:", 10, 15)
@@ -94,10 +89,6 @@ scene.draw = function()
         local text = "Choisissez un bonus avant de continuer"
         love.graphics.print(text, screen.centerx, screen.centery - 200, 0, 1, 1, getDecalage(text))
     end
-    --[[ if #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
-        local text = "Appuyez sur V pour lancer la prochaine vague!"
-        love.graphics.print(text, screen.centerx, screen.centery - 100, 0, 1, 1, getDecalage(text))
-    end ]]
     if getCurrentScene().pause then
         drawPause()
     end
@@ -109,14 +100,6 @@ scene.keyPressed = function(key)
     elseif key == "space" then
         scene.pause = not scene.pause
     end
-    --[[ elseif key == "v" and #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
-        newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
-        stage = stage + 1
-        WaveTimer = WaveTimer
-        WaveSpeed = WaveSpeed * 1.2
-        WaveDamage = WaveDamage * 1.2
-        WaveEnergy = WaveEnergy * 1.2
-    end ]]
 end
 
 scene.mousePressed = function(mouseX, mouseY, button)

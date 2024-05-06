@@ -55,6 +55,7 @@ function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
         enemy.energy = enemy.energy - pDamage
         if enemy.energy <= 0 then
             enemy.isFree = true
+            enemy.energy = 0
         elseif enemy.energy > 0 then
             enemy.state = "AttackHero"
         end
@@ -66,6 +67,15 @@ function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
                 otherSprite.takeDamage(enemy.damage)
             end
             enemy.isFree = true
+        end
+    end
+
+    enemy.lifeBar = createSprite("enemybar")
+    enemy.lifeBar.draw = function()
+        if enemy.isFree == false then
+            love.graphics.setColor(0.116, 0.675, 0.255)
+            love.graphics.rectangle("fill", enemy.x - pEnergy * 0.5, enemy.y + 20, enemy.energy, 10)
+            love.graphics.setColor(1, 1, 1)
         end
     end
 end

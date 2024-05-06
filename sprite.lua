@@ -28,9 +28,6 @@ function createSprite(label, pTexture, pX, pY, pAngle)
     sprite.onCollide = function(otherSprite)
     end
 
-    sprite.takeBonus = function(otherSprite)
-    end
-
     table.insert(sprites, sprite)
     return sprite
 end
