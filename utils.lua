@@ -1,3 +1,5 @@
+--local heroFish = require "herofish"
+
 function distance(x1, y1, x2, y2)
     return ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) ^ 0.5
 end
@@ -26,7 +28,15 @@ function drawPause()
     love.graphics.rectangle("fill", (screen.width - largeur) * 0.5, (screen.height - hauteur) * 0.5, largeur, hauteur)
     love.graphics.setColor(0, 0, 0)
     local text = "Le jeu est en pause, appuyez sur espace pour reprendre le jeu!"
+    love.graphics.print(text, screen.centerx, 150, 0, 1, 1, getDecalage(text))
+    local text = "Stats actuelles:"
     love.graphics.print(text, screen.centerx, 200, 0, 1, 1, getDecalage(text))
+    local text = "Vitesse de Maman:" .. tostring(heroFish.speed)
+    love.graphics.print(text, screen.centerx, 220, 0, 1, 1, getDecalage(text))
+    local text = "Dégats de Maman:" .. tostring(heroFish.shootingDamage)
+    love.graphics.print(text, screen.centerx, 240, 0, 1, 1, getDecalage(text))
+    local text = "Vitesse des tirs:" .. tostring(heroFish.shootingSpeed)
+    love.graphics.print(text, screen.centerx, 260, 0, 1, 1, getDecalage(text))
     local text = "Instructions de Gameplay:"
     love.graphics.print(text, screen.centerx, 300, 0, 1, 1, getDecalage(text))
     local text = "Defendez votre nid contre le plus grand nombre de vagues possibles!"

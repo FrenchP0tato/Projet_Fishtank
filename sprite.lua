@@ -22,12 +22,13 @@ function createSprite(label, pTexture, pX, pY, pAngle)
     sprite.draw = function()
         if sprite.texture ~= nil then
             love.graphics.draw(sprite.texture, sprite.x, sprite.y, sprite.angle, sprite.scale.x, sprite.scale.y, sprite.offset.x, sprite.offset.y)
-        --show collider:
-        --love.graphics.circle("line", sprite.x, sprite.y, sprite.radius)
         end
     end
 
     sprite.onCollide = function(otherSprite)
+    end
+
+    sprite.takeBonus = function(otherSprite)
     end
 
     table.insert(sprites, sprite)

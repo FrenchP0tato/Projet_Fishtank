@@ -1,5 +1,5 @@
 local hearts = {}
-hearts.nb = Startinglife
+hearts.nb = 0
 
 function loadHearts()
     hearts.image = love.graphics.newImage("images/pufferfish.png")

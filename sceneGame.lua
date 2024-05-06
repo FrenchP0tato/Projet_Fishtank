@@ -1,9 +1,11 @@
 require "bulle"
 require "enemy"
 require "wavespawner"
+require "bonus"
+
 local hearts = require "hearts"
 local nest = require "nest"
-local heroFish = require "herofish"
+heroFish = require "herofish"
 local tiles = require "tiles"
 local titles = require "titles"
 
@@ -13,9 +15,10 @@ STARTING_ENERGY = 100
 STARTING_SPEED = 200
 STARTING_DAMAGE = 10
 --Constantes Enemis/Waves
-ENEMY_BASEDAMAGE = 10
+ENEMY_BASEDAMAGE = 100
 ENEMY_BASEENERGY = 30
-WAVE_SIZE = 2
+ENEMY_STARTINGSPEED = 80
+WAVE_SIZE = 10
 WAVE_TIMER = 2
 
 local scene = {}
@@ -30,7 +33,7 @@ scene.load = function()
     stage = 0
     WaveSize = WAVE_SIZE
     WaveTimer = WAVE_TIMER
-    WaveSpeed = STARTING_SPEED * 0.5
+    WaveSpeed = ENEMY_STARTINGSPEED
     WaveDamage = ENEMY_BASEDAMAGE
     WaveEnergy = ENEMY_BASEENERGY
 end
@@ -56,6 +59,15 @@ scene.update = function(dt)
     end
     activeWaves = getGroupSprite("wave")
     enemyNB = getGroupSprite("enemy")
+    activeBonus = getGroupSprite("bonus")
+    if #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
+        newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
+        stage = stage + 1
+        WaveTimer = WaveTimer
+        WaveSpeed = WaveSpeed * 1.2
+        WaveDamage = WaveDamage * 1.2
+        WaveEnergy = WaveEnergy * 1.2
+    end
 end
 
 scene.draw = function()
@@ -78,11 +90,14 @@ scene.draw = function()
 
     local text = "Niveau:  "
     love.graphics.print(text .. tostring(stage), screen.centerx, 20, 0, 1.5, 1.5, getDecalage(text) * 1, 5)
-
-    if #activeWaves == 0 and #enemyNB == 0 then
+    if #activeBonus > 0 then
+        local text = "Choisissez un bonus avant de continuer"
+        love.graphics.print(text, screen.centerx, screen.centery - 200, 0, 1, 1, getDecalage(text))
+    end
+    --[[ if #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
         local text = "Appuyez sur V pour lancer la prochaine vague!"
         love.graphics.print(text, screen.centerx, screen.centery - 100, 0, 1, 1, getDecalage(text))
-    end
+    end ]]
     if getCurrentScene().pause then
         drawPause()
     end
@@ -93,14 +108,15 @@ scene.keyPressed = function(key)
         changeScene("Menu")
     elseif key == "space" then
         scene.pause = not scene.pause
-    elseif key == "v" and #activeWaves == 0 and #enemyNB == 0 then
+    end
+    --[[ elseif key == "v" and #activeWaves == 0 and #enemyNB == 0 and #activeBonus == 0 then
         newWave(WaveSize, WaveTimer, "AttackNest", WaveSpeed, WaveDamage, WaveEnergy)
         stage = stage + 1
         WaveTimer = WaveTimer
-        WaveSpeed = WaveSpeed * 1.1
-        WaveDamage = WaveDamage * 1.1
-        WaveEnergy = WaveEnergy * 1.1
-    end
+        WaveSpeed = WaveSpeed * 1.2
+        WaveDamage = WaveDamage * 1.2
+        WaveEnergy = WaveEnergy * 1.2
+    end ]]
 end
 
 scene.mousePressed = function(mouseX, mouseY, button)

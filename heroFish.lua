@@ -12,8 +12,8 @@ heroFish.init = function()
     heroFish.rotationSpeed = 3
     heroFish.life = STARTING_LIFE
     heroFish.energy = STARTING_ENERGY
-    heroFish.shootingspeed = 200
-    heroFish.shootingdamage = STARTING_DAMAGE
+    heroFish.shootingSpeed = STARTING_SPEED
+    heroFish.shootingDamage = STARTING_DAMAGE
     heroFish.scale.x = 1
     heroFish.scale.y = 1
 end
@@ -23,8 +23,8 @@ heroFish.rotate = function(dt, way)
     if math.abs(heroFish.angle) >= 2 * math.pi then
         heroFish.angle = 0
     end
-    local angleendegres = heroFish.angle * 180 / math.pi
-    if math.abs(angleendegres) > 90 then
+    local angleEnDegres = heroFish.angle * 180 / math.pi
+    if math.abs(angleEnDegres) > 90 then
         heroFish.scale.y = -1
     else
         heroFish.scale.y = 1
@@ -75,7 +75,7 @@ heroFish.fire = function()
     local distance = heroFish.offset.x
     firepoint.x = math.cos(heroFish.shootingAngle) * distance + heroFish.x
     firepoint.y = math.sin(heroFish.shootingAngle) * distance + heroFish.y
-    newbulle(firepoint.x, firepoint.y, heroFish.shootingAngle, heroFish.shootingspeed, heroFish.shootingdamage)
+    newbulle(firepoint.x, firepoint.y, heroFish.shootingAngle, heroFish.shootingSpeed, heroFish.shootingDamage)
 end
 
 heroFish.aim = function(pX, pY)
@@ -95,6 +95,18 @@ heroFish.takeDamage = function(pDamage)
         heroFish.lifeChange(-1)
         heroFish.energy = STARTING_ENERGY
     end
+end
+
+heroFish.changeSpeed = function(speedChange, way)
+    heroFish.speed = heroFish.speed + way * speedChange
+end
+
+heroFish.changeShootingSpeed = function(speedChange, way)
+    heroFish.shootingSpeed = heroFish.shootingSpeed + way * speedChange
+end
+
+heroFish.changeDamage = function(damageChange, way)
+    heroFish.shootingDamage = heroFish.shootingDamage + way * damageChange
 end
 
 heroFish.lifeBar = createSprite("HeroBar")
