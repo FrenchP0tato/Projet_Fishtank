@@ -46,7 +46,7 @@ function newBonus(nb, pX, pY)
         end
     end
 
-    bonus.info = createSprite("InfoText")
+    bonus.info = createSprite("infoBar")
     bonus.info.draw = function()
         if bonus.isFree == false then
             local text = 0

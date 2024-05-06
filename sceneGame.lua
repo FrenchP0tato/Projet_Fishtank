@@ -18,7 +18,7 @@ STARTING_DAMAGE = 10
 ENEMY_BASEDAMAGE = 100
 ENEMY_BASEENERGY = 30
 ENEMY_STARTINGSPEED = 80
-WAVE_SIZE = 10
+WAVE_SIZE = 1
 WAVE_TIMER = 2
 
 local scene = {}
@@ -41,6 +41,9 @@ end
 scene.unload = function()
     unloadSprites("enemy")
     unloadSprites("bulle")
+    unloadSprites("bonus")
+    unloadSprites("infoBar")
+    unloadSprites("wave")
 end
 
 scene.update = function(dt)

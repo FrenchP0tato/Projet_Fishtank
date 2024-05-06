@@ -70,7 +70,7 @@ function newEnemy(pX, pY, pState, pSpeed, pDamage, pEnergy, pSide)
         end
     end
 
-    enemy.lifeBar = createSprite("enemybar")
+    enemy.lifeBar = createSprite("infoBar")
     enemy.lifeBar.draw = function()
         if enemy.isFree == false then
             love.graphics.setColor(0.116, 0.675, 0.255)

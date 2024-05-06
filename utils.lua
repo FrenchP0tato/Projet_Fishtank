@@ -4,16 +4,6 @@ function distance(x1, y1, x2, y2)
     return ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) ^ 0.5
 end
 
-function checkWaves()
-    local waves = getGroupSprite("wave")
-    for i = 1, #waves do
-        if (waves[i].clear == false) then
-            return false
-        end
-        return true
-    end
-end
-
 function getDecalage(text)
     local text = text
     local font = love.graphics.getFont()
